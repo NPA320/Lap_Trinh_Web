@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +11,8 @@
 		<c:when test="${sessionScope.account == null}">
 			<div class="col-sm-6">
 				<ul class="list-inline right-topbar pull-right">
-					<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a> | <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
+					<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a> | 
+					    <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
 					<li><i class="search fa fa-search search-button"></i></li>
 				</ul>
 			</div>
@@ -20,9 +20,8 @@
 		<c:otherwise>
 			<div class="col-sm-6">
 				<ul class="list-inline right-topbar pull-right">
-					<li><a
-						href="${pageContext.request.contextPath
-}/member/myaccount">${sessionScope.account.fullName}</a>
+					<li><a href="${pageContext.request.contextPath}/member/myaccount">
+						${sessionScope.account.fullName}</a>
 						| <a href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
 					<li><i class="search fa fa-search search-button"></i></li>
 				</ul>
@@ -30,17 +29,4 @@
 		</c:otherwise>
 	</c:choose>
 </body>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
->>>>>>> 4fd7a0be915cecbe8d627cb9c7c97c9e104b9e5f
 </html>

@@ -42,6 +42,12 @@
             <!-- Submit -->
             <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
 
+			<div class="text-center mt-3">
+                <span>Quên mật khẩu?</span> 
+                <a href="${pageContext.request.contextPath}/ForgetPassword">Quên mật khẩu</a>
+            </div>
+
+
             <!-- Link đăng ký -->
             <div class="text-center mt-3">
                 <span>Chưa có tài khoản?</span> 

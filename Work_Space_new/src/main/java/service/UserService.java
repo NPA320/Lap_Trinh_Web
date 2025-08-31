@@ -12,4 +12,7 @@ public interface UserService {
 	boolean checkExistEmail(String email);
 	boolean checkExistUsername(String username);
 	boolean checkExistPhone(String phone);
+	
+	   // thêm hàm này cho Forget Password
+    boolean updatePassword(String email, String newPassword);
 }
