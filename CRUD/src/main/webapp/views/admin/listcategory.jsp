@@ -43,6 +43,16 @@
         </div>
         <button type="submit" class="btn btn-default">Thêm</button>
         <button type="reset" class="btn btn-primary">Hủy</button>
+        
+        <p>
+    Xin chào, ${sessionScope.username} |
+    <a href="<c:url value='/login.jsp'/>">Đăng xuất</a>
+</p>
+<hr/>
+        
+     
     </form>
+    
+    
 </body>
 </html>
