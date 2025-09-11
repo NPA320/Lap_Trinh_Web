@@ -34,12 +34,11 @@ public class Category implements Serializable {
 	public void setCategoryname(String categoryname) {
 		this.categoryname = categoryname;
 	}
-	@Column(name = "categoryname", nullable = false, unique = true, columnDefinition = "NVARCHAR(200)")
-	private String categoryname;
-
+	@Column(length = 200, nullable = false, unique = true)
+    private String categoryname;
 
     // nhiều category thuộc 1 user
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false) // cột FK trên bảng Categories
     private Users user;
 

@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
+
+<title>Admin Home</title>
+
 <div class="container mt-4">
 
     <!-- Thông tin người dùng -->
@@ -28,16 +23,11 @@
     </div>
 
     <!-- Danh sách Category -->
-    <div class="d-flex justify-content-between align-items-center mb-2">
-        <h3>Danh sách tất cả Category</h3>
-        <!-- 🔥 Nút thêm ra ngoài bảng -->
-        <a href="${pageContext.request.contextPath}/admin/add" class="btn btn-success">+ Thêm Category</a>
-    </div>
-
+    <h3>Danh sách tất cả Category</h3>
     <div class="card">
         <div class="card-body p-0">
             <table class="table table-bordered mb-0">
-                <thead>
+                <thead class="table-light">
                     <tr>
                         <th>ID</th>
                         <th>Tên danh mục</th>
@@ -61,10 +51,11 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <!-- Chỉ còn sửa và xóa -->
-                                <a href="${pageContext.request.contextPath}/admin/edit?id=${cate.id}" 
+                                <a href="${pageContext.request.contextPath}/admin/category/add" 
+                                   class="btn btn-sm btn-success">Thêm</a>
+                                <a href="${pageContext.request.contextPath}/admin/category/edit?id=${cate.id}" 
                                    class="btn btn-sm btn-warning">Sửa</a>
-                                <a href="${pageContext.request.contextPath}/admin/delete?id=${cate.id}" 
+                                <a href="${pageContext.request.contextPath}/admin/category/delete?id=${cate.id}" 
                                    class="btn btn-sm btn-danger"
                                    onclick="return confirm('Bạn có chắc muốn xóa danh mục này?')">Xóa</a>
                             </td>
@@ -83,5 +74,3 @@
     </div>
 
 </div>
-</body>
-</html>

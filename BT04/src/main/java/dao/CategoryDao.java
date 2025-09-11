@@ -11,5 +11,5 @@ public interface CategoryDao {
 	void delete (int id);
 	Category findById(int id);
 	public List<Category> findByUserId(int userId);
-    List<Category> findByRole(int roleid); 
+
 }

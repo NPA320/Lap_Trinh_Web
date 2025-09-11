@@ -9,6 +9,7 @@ import services.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
 	
+    // Nên dùng interface thay vì class để dễ thay đổi về sau
     private CategoryDao cateDao = new CategoryDaoImpl();
 
     @Override
@@ -18,33 +19,25 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void create(Category category) {
-        cateDao.create(category);
+        cateDao.create(category);   // gọi DAO để thêm mới
     }
 
     @Override
     public void update(Category category) {
-        cateDao.update(category);
+        cateDao.update(category);   // gọi DAO để cập nhật
     }
 
     @Override
     public void delete(int id) {
-        cateDao.delete(id);
+        cateDao.delete(id);         // gọi DAO để xóa
     }
 
     @Override
     public Category findById(int id) {
-        return cateDao.findById(id);
+        return cateDao.findById(id);  // gọi DAO để tìm theo id
     }
     
-   
-    
-    @Override
     public List<Category> findByUserId(int userId) {
         return cateDao.findByUserId(userId);
-    }
-    
-    @Override
-    public List<Category> findByRole(int roleid) {
-        return cateDao.findByRole(roleid);
     }
 }

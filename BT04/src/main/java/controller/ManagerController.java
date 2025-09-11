@@ -11,13 +11,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.CategoryService;
 import services.impl.CategoryServiceImpl;
 
 @WebServlet(urlPatterns = {"/manager/home"})
 public class ManagerController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final CategoryService cateService = new CategoryServiceImpl();
+    private final CategoryServiceImpl cateService = new CategoryServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -26,19 +25,21 @@ public class ManagerController extends HttpServlet {
         HttpSession session = req.getSession(false);
         Users user = (Users) (session != null ? session.getAttribute("account") : null);
 
-        // Nếu chưa login hoặc không phải Manager -> quay về login
         if (user == null || user.getRoleid() != 2) {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        // Lấy tất cả Category của những user có roleid = 2 (Manager)
-        List<Category> listcate = cateService.findByRole(2);
+        // lấy danh sách category thuộc user đang login
+//        List<Category> categories = user.getCategories();
 
-        // Gắn vào request để JSP hiển thị
-        req.setAttribute("listcate", listcate);
+        // nếu muốn lấy từ DB thì dùng service:
+        List<Category> categories = cateService.findByUserId(user.getId());
+        req.setAttribute("listcate", categories);
+        req.getRequestDispatcher("/views/manager.jsp").forward(req, resp);
 
-        // Forward sang trang JSP
+
+        req.setAttribute("listcate", categories);
         req.getRequestDispatcher("/views/manager.jsp").forward(req, resp);
     }
 }

@@ -12,8 +12,6 @@ import entity.Category;
 
 public class CategoryDaoImpl implements CategoryDao {
 
-	
-	
     @Override
     public List<Category> findAll() {
         EntityManager enma = JPAConfig.getEntityManager();
@@ -94,21 +92,5 @@ public class CategoryDaoImpl implements CategoryDao {
         }
     }
 
-    
-    @Override
-	public List<Category> findByRole(int roleid) {
-	    EntityManager em = JPAConfig.getEntityManager();
-	    try {
-	        String jpql = "SELECT c FROM Category c WHERE c.user.roleid = :roleid";
-	        TypedQuery<Category> query = em.createQuery(jpql, Category.class);
-	        query.setParameter("roleid", roleid);
-	        return query.getResultList();
-	    } finally {
-	        em.close();
-	    }
-	}
-
-    
-    
 }
 

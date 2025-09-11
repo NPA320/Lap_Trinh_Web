@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!-- Layout mặc định cho toàn site -->
+    <mapping path="/*" decorator="/main.jsp"/>
+
+    <!-- Layout riêng cho Admin -->
+    <mapping path="/admin/*" decorator="/admin.jsp"/>
+
+    <!-- Layout riêng cho Manager -->
+    <mapping path="/manager/*" decorator="/manager.jsp"/>
+
+    <!-- Layout riêng cho User -->
+    <mapping path="/user/*" decorator="/user.jsp"/>
+
+    <!-- Các tài nguyên tĩnh: không áp dụng decorator -->
+    <mapping path="/style/*"/>
+    <mapping path="/css/*"/>
+    <mapping path="/js/*"/>
+    <mapping path="/images/*"/>
+    <mapping path="/uploads/*"/>
+    <mapping path="/favicon.ico"/>
+</sitemesh>
