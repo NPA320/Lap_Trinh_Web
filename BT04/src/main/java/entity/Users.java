@@ -26,11 +26,18 @@ public class Users implements Serializable {
     @Column(length = 150, unique = true, nullable = false)
     private String email;
 
-    @Column(length = 20, unique = true, nullable = true)
+    @Column(length = 20, unique = true)
     private String phone;
 
     @Column(name = "roleid")
     private int roleid;
+
+    // === ẢNH: lưu đường dẫn/URL (khuyến nghị) ===
+    @Column(length = 300)           // vd: "/uploads/avatars/u123.png" hoặc "https://cdn..."
+    private String avatar;
+
+    @Column(length = 300)           // ảnh bìa/cover
+    private String background;
 
     // 1 user có nhiều category
     @OneToMany(
@@ -53,7 +60,7 @@ public class Users implements Serializable {
         c.setUser(null);
     }
 
-    // constructor đầy đủ
+    // constructor đầy đủ cũ (giữ để không phá vỡ code hiện có)
     public Users(int id, String username, String fullname, String password,
                  String email, String phone, int roleid, List<Category> categories) {
         super();
@@ -64,6 +71,23 @@ public class Users implements Serializable {
         this.email = email;
         this.phone = phone;
         this.roleid = roleid;
+        this.categories = categories;
+    }
+
+    // constructor đầy đủ MỚI (có avatar & background)
+    public Users(int id, String username, String fullname, String password,
+                 String email, String phone, int roleid, String avatar, String background,
+                 List<Category> categories) {
+        super();
+        this.id = id;
+        this.username = username;
+        this.fullname = fullname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.roleid = roleid;
+        this.avatar = avatar;
+        this.background = background;
         this.categories = categories;
     }
 
@@ -88,6 +112,12 @@ public class Users implements Serializable {
 
     public int getRoleid() { return roleid; }
     public void setRoleid(int roleid) { this.roleid = roleid; }
+
+    public String getAvatar() { return avatar; }
+    public void setAvatar(String avatar) { this.avatar = avatar; }
+
+    public String getBackground() { return background; }
+    public void setBackground(String background) { this.background = background; }
 
     public List<Category> getCategories() { return categories; }
     public void setCategories(List<Category> categories) { this.categories = categories; }
